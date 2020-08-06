@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Hoverable Table</h5>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">serialNumber</th>
+                        <th scope="col">name</th>
+                        <th scope="col">category</th>
+                        <th scope="col">Total stock</th>
+                        <th>Available Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for stock in all_stock %}
+                    <tr>
+                        <th>{{ stock.id }}</th>
+                        <td>{{stock.serialNumber}}</td>
+                        <td>{{stock.name}}</td>
+                        <td>{{stock.category}}</td>
+                        <td>{{all_stock_q}}</td>
+                        <td>{{ all_stock_new }}</td>
+                        <td><a href="{% url 'update_stock' stock.id %}">Give</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

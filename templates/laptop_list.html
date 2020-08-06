@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="row">
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+
+              <!-- recent orders  -->
+<!-- ============================================================== -->
+<div class="{% if given_lap %}col-xl-5{% endif %} col-lg-12 col-md-6 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header bg-dark text-white">Total Computer laptop</h5>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr class="border-0">
+                            <th class="border-0">Serial Number</th>
+                            <th class="border-0">Name</th>
+                            <th class="border-0">Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for foo in available_lap %}
+                        <tr>
+                            <td>{{ foo.serialNumber }}</td>
+                            <td>{{ foo.name }}</td>
+                            <td>{{foo.date_created.date}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% if given_lap %}
+<div class="col-xl-7 col-lg-12 col-md-6 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header bg-warning">Computer laptop Given</h5>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr class="border-0">
+                            <th class="border-0">Serial Number</th>
+                            <th class="border-0">Name</th>
+                            <th class="border-0">Personal</th>
+                            <th class="border-0">Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for foo in given_lap %}
+                        <tr>
+                            <td>{{ foo.device.serialNumber }}</td>
+                            <td>{{ foo.device.name }}</td>
+                            <td>{{foo.person}}</td>
+                            <td>{{foo.title}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    {% endif %}
+{% endblock %}
